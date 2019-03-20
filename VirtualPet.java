@@ -40,28 +40,7 @@ public class VirtualPet
 			System.out.println("\nSelect an action:");
 			int interact = input.nextInt();
 
-				if(interact == 3)
-				{
-					happiness+=1;
-					if(happiness >=1 && happiness<=2){happyString = "Happy";}
-					if(happiness ==3){happyString = "Very Happy";}
-					if(happiness >=4){happyString = "Super-Mega-Ultra Happy";}
-					if(happiness <0){happyString = "Sad";}
-
-					hunger+=1;
-					if(hunger >=1 && hunger <=2){hungerString = "Hungry";}
-					if(hunger ==3){hungerString = "Starving";}
-					if(hunger >=4){hungerString = "Borderline Dead (Calling PETA)";}
-					else if(hunger <=0){hungerString = "Full";}
-
-					cleanliness-=1;
-					if(cleanliness ==1){cleanString = "Messy";}
-					if(cleanliness == 0){cleanString = "Dirty";}
-					if(cleanliness < 0){cleanString = "Disgusting!";}
-					else if(cleanliness >=2){cleanString = "Clean";}
-
-					System.out.println("\n--------------"+name+"'s Current Status--------------"+"\n");
-				}
+				
 				if(interact == 1)
 				{
 					happiness+=1;
@@ -99,6 +78,28 @@ public class VirtualPet
 					else if(hunger <=0){hungerString = "Full";}
 
 					cleanliness+=1;
+					if(cleanliness ==1){cleanString = "Messy";}
+					if(cleanliness == 0){cleanString = "Dirty";}
+					if(cleanliness < 0){cleanString = "Disgusting!";}
+					else if(cleanliness >=2){cleanString = "Clean";}
+
+					System.out.println("\n--------------"+name+"'s Current Status--------------"+"\n");
+				}
+				if(interact == 3)
+				{
+					happiness+=1;
+					if(happiness >=1 && happiness<=2){happyString = "Happy";}
+					if(happiness ==3){happyString = "Very Happy";}
+					if(happiness >=4){happyString = "Super-Mega-Ultra Happy";}
+					if(happiness <0){happyString = "Sad";}
+
+					hunger+=1;
+					if(hunger >=1 && hunger <=2){hungerString = "Hungry";}
+					if(hunger ==3){hungerString = "Starving";}
+					if(hunger >=4){hungerString = "Borderline Dead (Calling PETA)";}
+					else if(hunger <=0){hungerString = "Full";}
+
+					cleanliness-=1;
 					if(cleanliness ==1){cleanString = "Messy";}
 					if(cleanliness == 0){cleanString = "Dirty";}
 					if(cleanliness < 0){cleanString = "Disgusting!";}
