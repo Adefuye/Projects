@@ -1,3 +1,5 @@
+//Doing simple fraction arithmetc in Java
+
 public class Fraction
 {
   private int numerator;
