@@ -1,0 +1,292 @@
+$darkColor: #080808;
+$lightColor: #F7F7F7;
+$btnColor: rgb(0, 204, 240);
+$outline: 1px solid rgb(233, 233, 233);
+
+body, html {
+  background-color: $darkColor;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/*-----------------------------N A V B A R-------------------------*/
+
+#navbar {
+  width: 100%;
+  /*padding:0px;*/
+  position: fixed;
+  top: 0px;
+  text-align: center;
+  background-color: #F7F7F7;
+  box-shadow: 0 3px 15px -6px #000;
+  /*NavBar*/
+  z-index: 1;
+  ul li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px 40px;
+    color: #0F0F0F;
+    font-size: 11px;
+    font-family: Arame;
+    cursor: pointer;
+    transition: .1s;
+    &:hover {
+      color: #00A8FF;
+    }
+  }
+}
+
+#logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 75px;
+  height: 25px;
+  position: fixed;
+  top: 13px;
+  left: 10px;
+}
+
+/*----------------------------H O M E  V I D---------------------------*/
+
+#homevideo {
+  position: relative;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+#video {
+  width: 100%;
+}
+
+#landingLogo {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  //margin-top: auto;
+  //margin-bottom: auto;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+/*--------------------------S O C I A L-----------------------*/
+
+#social {
+  position: fixed;
+  top: 40%;
+  left: 10px;
+  height: 140px;
+  width: 50px;
+  background-color: #F7F7F7;
+  border-radius: 100px;
+  z-index: 1;
+  box-shadow: 0 1px 15px -1px;
+  opacity: .4;
+  transition: .2s ease-out;
+  &:hover {
+    opacity: .9;
+  }
+}
+
+#IGLogo, #TwitterLogo, #FacebookLogo {
+  height: 40px;
+  width: 40px;
+  margin-left: 5px;
+  margin-top:5px;
+  opacity:.7;
+  //background-color:red; //for debugging only
+  transition: .1s ease-out;
+  border-radius: 30px;
+  &:hover {
+    opacity: 1;
+    box-shadow: 0 1px 15px -1px black;
+  }
+}
+
+/*--------------------------A B O U T-----------------------*/
+
+#about {
+  font-family: Arame;
+  color: #F7F7F7;
+  position: relative;
+  text-align: center;
+ // background-color: red; //for debugging only
+  height: 100vh;
+  h2 {
+    font-size: 40px;
+    position: relative;
+    top: 65px;
+  }
+}
+
+/*---------------------------G A M E S------------------------*/
+
+#games {
+  color: #131313;
+  width: 350px;
+  background-color: #F7F7F7;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  display: inline-block;/*aligns #games and #VFX horizontally*/
+  transition: .2s ease;
+  h1 {
+    font-size: 15px;
+    font-family: sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+  }
+}
+
+#gamesAboutBtn {
+  width:100px;
+  height:30px;
+  position: relative;
+  background-color: $btnColor;
+  border: 2px solid $btnColor;
+  font-family: Roboto;
+  font-weight: bold;
+  color:white;
+  cursor: pointer;
+  transition: .3s ease;
+  &:hover{
+    background-color: #00A9FF;
+    background: rgba(0, 17, 19, 0.6);
+  }
+}
+
+#gamesvid {
+  width: 100%;
+}
+
+/*--------------------------V F X--------------------------*/
+
+#VFX {
+  color: #131313;
+  width: 350px;
+  background-color: #F7F7F7;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  display: inline-block;/*aligns #games and #VFX horizontally*/
+  transition: .2s ease;
+  h1 {
+    font-size: 15px;
+    font-family: sans-serif;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: justify;
+  }
+}
+
+#vfxAboutBtn {
+  width:100px;
+  height:30px;
+  position: relative;
+  background-color: $btnColor;
+  border: 2px solid $btnColor;
+  font-family: Roboto;
+  font-weight: bold;
+  color:white;
+  cursor: pointer;
+  transition: .3s ease;
+  &:hover{
+    background-color: #00A9FF;
+    background: rgba(0, 17, 19, 0.6);
+  }
+}
+
+#VFXvid {
+  width: 100%;
+}
+
+/*-------------------------C O N T A C T-----------------------*/
+
+#contact {
+  font-family: Arame;
+  color: #F7F7F7;
+  position: relative;
+  text-align: center;
+  height: 100vh;
+  h2 {
+    font-size: 40px;
+    position: relative;
+    top: 65px;
+  }
+}
+
+#sentMessage {
+  font-size: 15px;
+  margin: 0;
+  font-family: Roboto;
+}
+
+form {
+  font-family: Arame;
+  font-size: 25px;
+  top: 100px;
+  bottom: 0;
+  position: relative;
+}
+
+input {
+  &[type=text] {
+    width: 350px;
+    color: black;
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 10px 10px;
+    margin: 5px 0;
+    cursor: auto;
+    font-family: Roboto;
+    font-size: 15px;
+    border:none;
+  }
+  &[type=button] {
+    width: 350px;
+    background-color: $btnColor;
+    color: white;
+    padding: 10px 10px;
+    margin: 5px 0;
+    border: 2px solid $btnColor;
+    cursor: pointer;
+    font-size: 25px;
+    font-family: Arame;
+    transition: .2s ease-in-out;
+    &:hover {
+      background-color: #00A9FF;
+      background: rgba(1, 232, 255, 0.05);
+    }
+  }
+}
+
+/*-------------------------F O O T E R-----------------------*/
+
+#footer {
+  position: relative;
+  font-size: 15px;
+  top: 100px;
+  text-align: center;
+  background-color: #000;
+  color: white;
+  height: 150px;
+  p {
+    display: inline-block;
+    position: relative;
+    top: 10px;
+  }
+}
+
+#LiteLogo {
+  height: 65px;
+  width: 200px;
+  position: relative;
+  top: 35px;
+}

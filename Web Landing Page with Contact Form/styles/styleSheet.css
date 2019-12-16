@@ -1,0 +1,308 @@
+body, html {
+  background-color: #080808;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/*-----------------------------N A V B A R-------------------------*/
+#navbar {
+  width: 100%;
+  /*padding:0px;*/
+  position: fixed;
+  top: 0px;
+  text-align: center;
+  background-color: #F7F7F7;
+  -webkit-box-shadow: 0 3px 15px -6px #000;
+          box-shadow: 0 3px 15px -6px #000;
+  /*NavBar*/
+  z-index: 1;
+}
+
+#navbar ul li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px 40px;
+  color: #0F0F0F;
+  font-size: 11px;
+  font-family: Arame;
+  cursor: pointer;
+  -webkit-transition: .1s;
+  transition: .1s;
+}
+
+#navbar ul li:hover {
+  color: #00A8FF;
+}
+
+#logo {
+  display: inline-block;
+  vertical-align: top;
+  width: 75px;
+  height: 25px;
+  position: fixed;
+  top: 13px;
+  left: 10px;
+}
+
+/*----------------------------H O M E  V I D---------------------------*/
+#homevideo {
+  position: relative;
+  width: 100%;
+  max-height: 100vh;
+  overflow: hidden;
+}
+
+#video {
+  width: 100%;
+}
+
+#landingLogo {
+  height: 100px;
+  width: 300px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: 0;
+  left: 0;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+
+/*--------------------------S O C I A L-----------------------*/
+#social {
+  position: fixed;
+  top: 40%;
+  left: 10px;
+  height: 160px;
+  width: 50px;
+  background-color: #F7F7F7;
+  border-radius: 100px;
+  z-index: 1;
+  -webkit-box-shadow: 0 1px 15px -1px;
+          box-shadow: 0 1px 15px -1px;
+  opacity: .4;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+#social:hover {
+  opacity: .9;
+}
+
+#IGLogo, #TwitterLogo, #FacebookLogo {
+  height: 40px;
+  width: 40px;
+  margin: 5px;
+  -webkit-transition: .1s ease-out;
+  transition: .1s ease-out;
+  border-radius: 30px;
+}
+
+#IGLogo:hover, #TwitterLogo:hover, #FacebookLogo:hover {
+  -webkit-box-shadow: 0 1px 15px -1px;
+          box-shadow: 0 1px 15px -1px;
+}
+
+/*--------------------------A B O U T-----------------------*/
+#about {
+  font-family: Arame;
+  font-size: 40px;
+  color: #F7F7F7;
+  position: relative;
+  text-align: center;
+  height: 550px;
+}
+
+#about h2 {
+  font-size: 40px;
+  position: relative;
+  top: 65px;
+}
+
+/*---------------------A B O U T  C O N T A I N E R--------------------*/
+#aboutContainer {
+  width: 100%;
+  margin: 0 auto;
+  /*contains #games and #VFX to help align horizontally*/
+}
+
+/*---------------------------G A M E S------------------------*/
+#games {
+  color: #131313;
+  width: 350px;
+  height: 400px;
+  background-color: #F7F7F7;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  display: inline-block;
+  /*aligns #games and #VFX horizontally*/
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+#games:hover {
+  top: 45px;
+}
+
+#games h1 {
+  font-size: 15px;
+  font-family: sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: justify;
+}
+
+#gamesvid {
+  width: 100%;
+}
+
+/*--------------------------V F X--------------------------*/
+#VFX {
+  color: #131313;
+  width: 350px;
+  height: 400px;
+  background-color: #F7F7F7;
+  position: relative;
+  top: 50px;
+  text-align: justify;
+  margin: auto;
+  display: inline-block;
+  /*aligns #games and #VFX horizontally*/
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+#VFX:hover {
+  top: 45px;
+}
+
+#VFX h1 {
+  font-size: 15px;
+  font-family: sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#VFXvid {
+  width: 100%;
+}
+
+/*--------------------------V F X--------------------------*/
+#extra {
+  color: #131313;
+  width: 350px;
+  height: 400px;
+  background-color: #F7F7F7;
+  position: relative;
+  top: 50px;
+  text-align: justify;
+  margin: auto;
+  display: inline-block;
+  /*aligns #games and #VFX horizontally*/
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+#extra:hover {
+  top: 45px;
+}
+
+#extra h1 {
+  font-size: 15px;
+  font-family: sans-serif;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#extraVid {
+  width: 100%;
+}
+
+/*-------------------------C O N T A C T-----------------------*/
+#contact {
+  font-family: Arame;
+  font-size: 40px;
+  color: #F7F7F7;
+  position: relative;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  height: 500px;
+}
+
+#sentMessage {
+  font-size: 15px;
+  margin: 0;
+  font-family: Roboto;
+}
+
+form {
+  font-family: Arame;
+  font-size: 25px;
+  top: 100px;
+  bottom: 0;
+  position: relative;
+}
+
+input[type=text] {
+  width: 20%;
+  color: black;
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 10px 0px;
+  margin: 5px 0;
+  cursor: auto;
+  font-family: Roboto;
+  font-size: 15px;
+}
+
+input[type=button] {
+  width: 20%;
+  background-color: #01BBFE;
+  color: white;
+  padding: 10px 10px;
+  margin: 5px 0;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+  font-family: Arame;
+  -webkit-transition: .2s ease-out;
+  transition: .2s ease-out;
+}
+
+input[type=button]:hover {
+  background-color: #00A9FF;
+  background: rgba(1, 232, 255, 0.05);
+  outline: #01BBFE solid 1px;
+}
+
+/*-------------------------F O O T E R-----------------------*/
+#footer {
+  position: relative;
+  font-size: 15px;
+  top: 100px;
+  text-align: center;
+  background-color: #000;
+  color: white;
+  height: 150px;
+}
+
+#footer p {
+  position: relative;
+  top: 10px;
+}
+
+#LiteLogo {
+  height: 65px;
+  width: 200px;
+  position: relative;
+  top: 30px;
+}
+/*# sourceMappingURL=styleSheet.css.map */
