@@ -2,5 +2,5 @@
 projectName=$1
 mkdir $projectName
 cd $projectName
-touch Documentation.txt
+touch DesignDoc.txt
 echo "Created New Project: " $projectName
