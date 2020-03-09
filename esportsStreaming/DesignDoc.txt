@@ -1,0 +1,6 @@
+Summary:
+Website specified for streaming all esports events/tournaments
+currently going on. The site will be mainly streaming embedded viewer of the
+official site (to avoid legal issue)
+
+
