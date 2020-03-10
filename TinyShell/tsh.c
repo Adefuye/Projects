@@ -175,17 +175,13 @@ void eval(char *cmdline)
 	char *argv[MAXARGS]; //handling max amount of chars in the cmd argument
 	pid_t pid; //storing myPid
 	int bg; //handle job running in background or foreground
-	char sbuf[MAXLINE];
+	char buf[MAXLINE];
 
-	strcpy(sbuf, cmdline); //copying the commandline arguments into sbuf
-	bg = parseline(sbuf, argv);
+	strcpy(buf, cmdline); //copying the commandline arguments into sbuf
+	bg = parseline(buf, argv);
     if(argv[0] == null) //do nothing if there are empty lines
         return;
     
-    if(builtin_cmd(argv) == 0)
-    {
-        if()
-    }
 	return;
 }
 
