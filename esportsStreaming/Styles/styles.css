@@ -52,9 +52,9 @@ body, html {
 #gameModel {
   position: relative;
   background-color: #171717;
-  height: 200px;
-  width: 200px;
-  border-radius: 20px;
+  height: 300px;
+  width: 250px;
+  border-radius: 10px;
   top: 100px;
   display: inline-block;
   margin: 20px;
@@ -64,12 +64,12 @@ body, html {
   transition: .1s ease-out;
 }
 
-#gamePic {
-  height: 200px;
-  width: 200px;
-  border-radius: 20px;
-}
-
+/*
+#gamePic{
+    height:200px;
+    width: 200px;
+    border-radius:10px;
+}*/
 /*#landingPage{
      position: relative;
      width:100%;

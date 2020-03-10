@@ -57,9 +57,9 @@ body, html{
 #gameModel{
     position: relative;
     background-color:$midColor;
-    height:200px;
-    width: 200px;
-    border-radius: 20px;
+    height:300px;
+    width: 250px;
+    border-radius: 10px;
     top:100px;
     display:inline-block;
     margin:20px;
@@ -70,11 +70,13 @@ body, html{
         
     }
 }
+//Try ma
+/*
 #gamePic{
     height:200px;
     width: 200px;
-    border-radius:20px;
-}
+    border-radius:10px;
+}*/
  /*#landingPage{
      position: relative;
      width:100%;
