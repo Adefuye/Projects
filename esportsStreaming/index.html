@@ -7,7 +7,7 @@
 	<head>
 		<title>Esports Tracker</title>
 		<link rel="shortcut icon" type="image/png" href="Assets/Images/LITEicon.png"/>
-		<link rel="stylesheet" href="styles/styleSheet.css">
+		<link rel="stylesheet" href="Styles/styles.css">
 		<meta charset="utf-8">
 		<meta name="keywords" content="esports, tournament, gaming, major, esl, eleague, mlg, event, tourney">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +18,14 @@
 	<body >
 		<div id="header">
 
-			<div id="homevideo"> <!--Homepage Video-->
+			<div id="homevideo"> 
 				<video preload="preload" id="video" autoplay="autoplay" loop="loop" muted>
 					<source src="Assets/mainVideo.mp4" type="video/mp4"></source>
 				</video>
-			</div>
+			</div><!--Homepage Video-->
 
 			<div id="navbar"> <!--NavBar-->
-				<a href="#video" onClick="easterEgg()"><img id="logo" src="Assets/Images/LITE logo dark.png"></a>
+				<a href="#video" onClick="easterEgg()"><img id="logo" src=""></a>
 				<ul id="HomeNav">
 					<a href="#video"><li>H O M E</li></a>
 					<a href="#about"><LI>A B O U T</LI></a>
@@ -34,23 +34,23 @@
 			</div>
         </div><!--end Header DIV-->
         
-		<div id="social">
+		<!--<div id="social">
 			<a href="https://instagram.com/literichh" target="_blank"><image id="IGLogo"src="Assets/Images/InstagramLogo.png"></a>
 			<a href="https://twitter.com/llterich" target="_blank"><image id="TwitterLogo"src="Assets/Images/TwitterLogo.png"></a>
 			<a href="https://facebook.com/literichh" target="_blank"><image id="FacebookLogo"src="Assets/Images/FacebookLogo.png"></a>
 		</div><!--end Social Floating Tab-->
 
-		<div id="about"><!--<h2>A B O U T</h2>-->
-			
-			 <div id="game1">
-			 	<img src="Assets/Images/photo.jpg" id="gamePic">
-			 	<h1>TITLE
-					<p>WORDS WORDS WORDS WORDS</p>
-					<button id="gamesAboutBtn">LEARN MORE</button>	
-				 </h1>
-				 	 
-             </div><!--end Games DIV-->
-        </div><!--end About DIV-->
+		<div id="gamesList"><!--<h2>A B O U T</h2>-->
+			 <div id="gameModel">
+				 <img src="Assets/landingImage.jpg" id="gamePic">
+			 </div><!--end gameModel DIV-->
+			 <div id="gameModel">
+				<img src="Assets/landingImage.jpg" id="gamePic">
+			</div><!--end gameModel DIV-->
+			<div id="gameModel">
+				<img src="Assets/landingImage.jpg" id="gamePic">
+			</div><!--end gameModel DIV-->
+        </div><!--end gamesList DIV-->
 
 			 <!--<div id="twitch-embed"></div>
 			 <script src="https://embed.twitch.tv/embed/v1.js"></script>
@@ -68,7 +68,7 @@
 
 
 		<div id="footer">
-			<image id="LiteLogo" src="Assets/Images/LITE logo light.png">
+			<!--<image id="LiteLogo" src="Assets/Images/LITE logo light.png">-->
 			 	<p>Copyright © LITERICH 2020 All Rights Reserved</p>
 		</div>
 		<script src="script.js"></script>

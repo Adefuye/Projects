@@ -1,0 +1,89 @@
+$darkColor: #06090f;
+$lightColor: #F7F7F7;
+$midColor:#171717;
+$btnColor: rgb(0, 204, 240);
+$outline: 1px solid rgb(233, 233, 233);
+$fontFam: Arial;
+
+body, html{
+    background-color: $darkColor;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+//-------------NAVBAR----------------------
+#navbar{
+    width:100%;
+    position: fixed;
+    top:0px;
+    text-align:center;
+    background-color: $lightColor;
+    box-shadow: 0 3px 15px -6px;
+    z-index: 1;
+
+    ul li{
+        list-style-type: none;
+        display:inline-block;
+        padding: 1px 40px;
+        color: $darkColor;
+        font-size:10px;
+        font-family: $fontFam;
+        cursor: pointer;
+        transition:.1s;
+        &.hover{
+            color: #00A8FF;
+        }
+    }
+}
+//---------------------LANDING VID-------------------
+#homevideo {
+    position: relative;
+    width: 100%;
+    max-height: 100vh;
+    //overflow: hidden;
+    object-fit: cover;
+  }
+  
+  #video {
+    width: 100%;
+  }
+//----------------GAME LIST------------------
+#gamesList{
+    //background-color: red;
+    position: relative;
+    height: 100vh;
+}
+
+#gameModel{
+    position: relative;
+    background-color:$midColor;
+    height:200px;
+    width: 200px;
+    border-radius: 20px;
+    top:100px;
+    display:inline-block;
+    margin:20px;
+    box-shadow: 0 15px 20px 0 #000;
+    transition:.1s ease-out;
+    &:hover{
+        //outline:$outline;
+        
+    }
+}
+#gamePic{
+    height:200px;
+    width: 200px;
+    border-radius:20px;
+}
+ /*#landingPage{
+     position: relative;
+     width:100%;
+     height:auto;
+     object-fit:cover;
+ }
+
+ #landingImage{//image within the landing div
+     width:100%;
+     height:auto;
+     display:block;
+ }*/
