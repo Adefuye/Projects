@@ -2,6 +2,7 @@
  * tsh - A tiny shell program with job control
  * 
  * Emmanuel Adefuye eaadefuy@uno.edu
+ * 03/2020
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -170,18 +171,39 @@ int main(int argc, char **argv)
  * background children don't receive SIGINT (SIGTSTP) from the kernel
  * when we type ctrl-c (ctrl-z) at the keyboard.  
 */
-void eval(char *cmdline)
+void eval(char *cmdline) //---------Referenced the Textbook and Slides----------
 {
 	char *argv[MAXARGS]; //handling max amount of chars in the cmd argument
 	pid_t pid; //storing myPid
-	int bg; //handle job running in background or foreground
-	char buf[MAXLINE];
+	int bg; //handle job running in background
+	
+	bg = parseline(cmdline, argv);//parsing the command
+    	
+	if(argv[0] == NULL) //do nothing if the command argument is blank
+        	return;
+	if(builtin_cmd(argv)==0){//if argument is a builtin_cmd()
+		if((pid = fork()) == 0){//child process
+			if(execve(argv[0], argv, environ) < 0){
+				printf("%s: Command Not Found\n", argv[0]);//returns error string
+				exit(0);		
+			}
+		}
+		else if(pid < 0)//if the pid is less than zero there's an error
+			unix_error("fork is less than Zero");
+	}
 
-	strcpy(buf, cmdline); //copying the commandline arguments into sbuf
-	bg = parseline(buf, argv);
-    if(argv[0] == null) //do nothing if there are empty lines
-        return;
-    
+	if(!bg){//checking for background process (parent process)
+        /*if(!bg)
+            addjob(jobs, pid, FG, cmdline);
+        else{
+            addjob(jobs, pid, BG, cmdline);
+        }*/
+		int status;
+		if(waitpid(pid, &status, 0) < 0)
+			unix_error("waitfg: waitpid error");
+	}
+	else
+		printf("%d %s", pid, cmdline);
 	return;
 }
 
@@ -248,13 +270,22 @@ int parseline(const char *cmdline, char **argv)
  */
 int builtin_cmd(char **argv) 
 {
-	char quit[] = "quit", fg[] = "fg", bg[] = "bg", jobs[] = "jobs";
-	printf("%s\n", argv[0]);
-        if(strcmp(*argv,quit) == 0){exit(0);} //if the cmd is 'quit'
-        if(strcmp(*argv,fg) == 0){}//if the cmd is 'fg'
-	if(strcmp(*argv,bg) == 0){}//if the cmd is 'bg'
-        if(strcmp(*argv,jobs) == 0){}//if the cmd is 'jobs'
-    	return 0;     /* not a builtin command */
+    if(strcmp(*argv,"quit") == 0) //if the cmd is 'quit'
+        exit(0);
+    if(strcmp(*argv,"fg") == 0 || strcmp(*argv, "bg") == 0){//if the cmd is 'fg' or 'bg' (they call the same function)
+        //call do_bgfg()
+        do_bgfg(argv);
+        return 1;
+    }
+    if(strcmp(*argv,"&") == 0){//if the cmd is '&'
+        return 1; //returning 1 to create a background process
+    }
+    if(strcmp(*argv,"jobs") == 0){ //if the cmd is 'jobs'
+        listjobs(jobs);
+        return 1;
+    }
+
+    return 0;   //creates a child process
 }
 
 
@@ -290,6 +321,11 @@ void do_redirect(char **argv)
  */
 void do_bgfg(char **argv) 
 {
+    char *id = argv[1]; //this is supposed to be the process ID typed in after bg or fg
+    if(id == NULL){
+        printf("%s command requires PID or %%jobid argument\n", argv[0]);
+        return;
+    }
     return;
 }
 
