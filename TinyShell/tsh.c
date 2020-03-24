@@ -181,30 +181,39 @@ void eval(char *cmdline) //---------Referenced the Textbook and Slides----------
     	
 	if(argv[0] == NULL) //do nothing if the command argument is blank
         	return;
-	if(builtin_cmd(argv)==0){//if argument is a builtin_cmd()
+	if(builtin_cmd(argv)==0)
+    {//if argument is a builtin_cmd()
 		if((pid = fork()) == 0){//child process
-			if(execve(argv[0], argv, environ) < 0){
+			if(execve(argv[0], argv, environ) < 0){//checking if the command exists by trying run it
 				printf("%s: Command Not Found\n", argv[0]);//returns error string
 				exit(0);		
 			}
 		}
 		else if(pid < 0)//if the pid is less than zero there's an error
 			unix_error("fork is less than Zero");
-	}
-
-	if(!bg){//checking for background process (parent process)
-        /*if(!bg)
+	}else{
+        if(!bg){
             addjob(jobs, pid, FG, cmdline);
-        else{
+        }
+        else {
             addjob(jobs, pid, BG, cmdline);
-        }*/
-		int status;
-		if(waitpid(pid, &status, 0) < 0)
-			unix_error("waitfg: waitpid error");
-	}
-	else
-		printf("%d %s", pid, cmdline);
-	return;
+        }
+       // sigprocmask(SIG_UNBLOCK, &mask, NULL);
+
+        if(!bg)
+        {//parent waitng for bg process to term.
+            //int status;
+            //if(waitpid(pid, &status, 0) < 0)
+                //unix_error("waitfg: waitpid error");
+                waitfg(pid);
+        }
+        else{//following tshref format
+            printf("[%d] (%d) %s", pid2jid(pid), pid, cmdline);
+        }
+    }
+
+
+	//return;
 }
 
 /* 
@@ -273,8 +282,7 @@ int builtin_cmd(char **argv)
     if(strcmp(*argv,"quit") == 0) //if the cmd is 'quit'
         exit(0);
     if(strcmp(*argv,"fg") == 0 || strcmp(*argv, "bg") == 0){//if the cmd is 'fg' or 'bg' (they call the same function)
-        //call do_bgfg()
-        do_bgfg(argv);
+        do_bgfg(argv);//do_bgfg() will handle the command
         return 1;
     }
     if(strcmp(*argv,"&") == 0){//if the cmd is '&'
@@ -285,7 +293,7 @@ int builtin_cmd(char **argv)
         return 1;
     }
 
-    return 0;   //creates a child process
+    return 0;   //should create a child process
 }
 
 
@@ -321,10 +329,24 @@ void do_redirect(char **argv)
  */
 void do_bgfg(char **argv) 
 {
-    char *id = argv[1]; //this is supposed to be the process ID typed in after bg or fg
-    if(id == NULL){
+    
+    // '363636' regular number is Process ID
+    pid_t pid; //process ID
+    int jid; //job id
+    char *id = argv[1]; //this represents the ID number typed after the bg or fg command
+    
+
+    if(id == NULL){//if the process id or job id doesnt exist in the command line
         printf("%s command requires PID or %%jobid argument\n", argv[0]);
         return;
+    }
+    struct job_t *job;//will be needed to access the process's memory address
+    if(id[0] == '%'){// '%1' is job id index for 1t bg/fg process
+        job = getjobjid(jobs, jid);// returns the job at current memory location
+        if(job == NULL){
+            printf("%s: No such job\n", id);
+            return;
+        }
     }
     return;
 }
@@ -334,6 +356,13 @@ void do_bgfg(char **argv)
  */
 void waitfg(pid_t pid)
 {
+    struct job_t* job = getjobpid(jobs, pid);
+    //put the prcess on hold
+    if(job != NULL){
+        while(pid==fgpid(jobs)){}//do nothing to keep the fg processs on hold
+    }
+    if(pid == 0)//if there's no process running
+        return;
     return;
 }
 
@@ -350,6 +379,28 @@ void waitfg(pid_t pid)
  */
 void sigchld_handler(int sig) 
 {
+    pid_t pid;
+    int status;
+
+    while ((pid = waitpid(fgpid(jobs), &status, WNOHANG|WUNTRACED)) > 0) {  
+        if (WIFSTOPPED(status)){ 
+            //change state if stopped
+            getjobpid(jobs, pid)->state = ST;
+            int jid = pid2jid(pid);
+            printf("Job [%d] (%d) Stopped by signal %d\n", jid, pid, WSTOPSIG(status));
+        }  
+        else if (WIFSIGNALED(status)){
+            //delete is signaled
+            int jid = pid2jid(pid);  
+            printf("Job [%d] (%d) terminated by signal %d\n", jid, pid, WTERMSIG(status));
+            deletejob(jobs, pid);
+        }  
+        else if (WIFEXITED(status)){  
+            //exited
+            deletejob(jobs, pid);  
+        }  
+    }
+
     return;
 }
 
@@ -360,6 +411,7 @@ void sigchld_handler(int sig)
  */
 void sigint_handler(int sig) 
 {
+
     return;
 }
 
@@ -370,6 +422,10 @@ void sigint_handler(int sig)
  */
 void sigtstp_handler(int sig) 
 {
+    //kill process if the pid isn't an existing id
+    pid_t pid = fgpid(jobs);
+    if(pid != 0)
+        kill(-pid, sig);
     return;
 }
 
