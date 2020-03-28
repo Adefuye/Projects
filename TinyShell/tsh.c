@@ -192,20 +192,20 @@ void eval(char *cmdline) //---------Referenced the Textbook and Slides----------
 		else if(pid < 0)//if the pid is less than zero there's an error
 			unix_error("fork is less than Zero");
 	}else{
-        if(!bg){
+        //add the job to the jobs list
+        if((!bg) == 1){
             addjob(jobs, pid, FG, cmdline);
         }
         else {
             addjob(jobs, pid, BG, cmdline);
         }
-       // sigprocmask(SIG_UNBLOCK, &mask, NULL);
 
-        if(!bg)
+        if((!bg) == 1)
         {//parent waitng for bg process to term.
-            //int status;
-            //if(waitpid(pid, &status, 0) < 0)
-                //unix_error("waitfg: waitpid error");
-                waitfg(pid);
+            int status;
+            if(waitpid(pid, &status, 0) < 0)
+                unix_error("waitfg: waitpid error");
+                //waitfg(pid);
         }
         else{//following tshref format
             printf("[%d] (%d) %s", pid2jid(pid), pid, cmdline);
@@ -341,14 +341,13 @@ void do_bgfg(char **argv)
         return;
     }
     struct job_t *job;//will be needed to access the process's memory address
-    if(id[0] == '%'){// '%1' is job id index for 1t bg/fg process
+    if(id[0] == '%'){// if Job id ('%1' or '%2' etc.)
         job = getjobjid(jobs, jid);// returns the job at current memory location
         if(job == NULL){
             printf("%s: No such job\n", id);
             return;
         }
     }
-    return;
 }
 
 /* 
@@ -411,7 +410,10 @@ void sigchld_handler(int sig)
  */
 void sigint_handler(int sig) 
 {
-
+    //kill process if the pid isn't an existing id
+    pid_t pid = fgpid(jobs);
+    if(pid != 0)
+        kill(-pid, sig); 
     return;
 }
 
