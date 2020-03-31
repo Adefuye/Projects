@@ -211,17 +211,16 @@ void eval(char *cmdline) //---------Referenced the Textbook and Slides----------
             sigprocmask(SIG_UNBLOCK, &mask, NULL);//unblocking the child signal
 
             if(!bg)//referenced Slides
-            {//parent waitng for bg process to term.
-                int status;
-                if(waitpid(pid, &status, 0) < 0)
-                    unix_error("waitfg: waitpid error");
+            {
+                //parent waitng for bg process to term.
+                waitfg(pid);
             }
             else{//following tshref format for bg process
                 printf("[%d] (%d) %s", pid2jid(pid), pid, cmdline);
             }
         }
 	}
-	//return;
+    return;
 }
 
 /* 
