@@ -5,10 +5,10 @@ from selenium import webdriver;
 Timer = 2
 
 #youtube link
-link = 'https://youtu.be/yDjmdbEnsVY'
+link = 'https://www.youtube.com/watch?v=hW_WFUs3hfQ'
 
 #number of views
-views = 1000
+views = 10
 
 driver = webdriver.Chrome()
 driver.get(link)
@@ -16,3 +16,4 @@ driver.get(link)
 for i in range(views):
     time.sleep(Timer)
     driver.refresh()
+    print(i)
