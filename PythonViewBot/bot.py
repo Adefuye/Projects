@@ -1,3 +1,5 @@
+#Selenium Webdriver must be installed for this to work
+
 import time;
 from selenium import webdriver;
 
