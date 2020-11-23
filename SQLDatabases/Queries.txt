@@ -1,0 +1,13 @@
+2.3.1 Queries for the AZ and GV databases
+------------------------------------------------------------------
+GV)
+1.	SELECT first_name, last_name FROM Employee
+	ORDER BY last_name;
+
+2.	SELECT first_name, last_name FROM Employee
+	WHERE fac_id IN (
+	SELECT fac_id FROM Job WHERE pay_type = 'salary'
+	ORDER BY pay_rate
+	);
+
+3.	
