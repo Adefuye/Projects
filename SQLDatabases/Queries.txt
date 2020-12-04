@@ -1,13 +1,246 @@
-2.3.1 Queries for the AZ and GV databases
-------------------------------------------------------------------
-GV)
-1.	SELECT first_name, last_name FROM Employee
-	ORDER BY last_name;
-
-2.	SELECT first_name, last_name FROM Employee
-	WHERE fac_id IN (
-	SELECT fac_id FROM Job WHERE pay_type = 'salary'
-	ORDER BY pay_rate
-	);
-
-3.	
+--------------------------------------------
+-- 2.3.1 Queries for the AZ and GV databases
+--------------------------------------------
+-- 1. List the workers by names in the alphabetical order of last names.
+SELECT first_name, last_name
+FROM   Employee
+ORDER  BY last_name;
+-- 2. List the staff (salary workers) by salary in descending order.
+SELECT first_name, last_name, pay_rate
+FROM   Employee NATURAL JOIN Job
+WHERE  pay_type = 'salary'
+ORDER  BY pay_rate DESC; 
+-- 3. List the average annual pay (the salary or wage rates
+--    multiplying by 1920 hours) of each store/factory in descending
+--    order.
+-- AZ
+WITH annual_pay (store_id, salary)
+     AS (SELECT store_id,
+                CASE
+                  WHEN pay_type = 'wage' THEN pay_rate * 1920
+                  ELSE pay_rate
+                END
+         FROM   Job)
+SELECT store_id, AVG(salary)
+FROM   annual_pay
+GROUP  BY fac_id
+ORDER  BY AVG(salary) DESC;
+-- GV
+WITH annual_pay (fac_id, fac_name, salary)
+     AS (SELECT fac_id, fac_name, 
+                CASE
+                  WHEN pay_type = 'wage' THEN pay_rate * 1920
+                  ELSE pay_rate
+                END
+         FROM   Job NATURAL JOIN Factory)
+SELECT fac_id, fac_name, AVG(salary)
+FROM   annual_pay
+GROUP  BY fac_id
+ORDER  BY AVG(salary) DESC;
+-- 4. List the required skills of a given pos code in a readable format.
+-- AZ
+SELECT sk_code, title, sk_desc
+FROM   Skill NATURAL JOIN Requires
+WHERE  pos_code = '41-1011.00'; 
+-- GV
+SELECT sk_code, title, sk_desc
+FROM   Skill NATURAL JOIN Requires
+WHERE  pos_code = '53-7073.00';
+-- 5. Given a person’s identifier, list this person’s skills in a readable
+--    format.
+SELECT sk_code, title
+FROM   Has_skill NATURAL JOIN Skill
+WHERE  emp_id = 2;
+-- 6. Given a person’s identifier, list a person’s missing skills for a
+--    specific pos code in a readable format.
+-- AZ
+WITH missing (sk_code)
+     AS (SELECT sk_code
+         FROM   Requires
+         WHERE  pos_code = '41-2022.00'
+         EXCEPT
+         SELECT sk_code
+         FROM   Has_skill
+         WHERE  emp_id = 2)
+SELECT sk_code, title
+FROM   missing NATURAL JOIN Skill; 
+-- GV
+WITH missing (sk_code)
+     AS (SELECT sk_code
+         FROM   Requires
+         WHERE  pos_code = '53-7073.00'
+         EXCEPT
+         SELECT sk_code
+         FROM   Has_skill
+         WHERE  emp_id = 2)
+SELECT sk_code, title
+FROM   missing NATURAL JOIN Skill; 
+-- 7. List the total number and the total sales ($) of every item in a
+--    given period of time (start date, end date) in AZ in the descending
+--    order of sales.
+SELECT item_num,
+       SUM(quantity) AS total_number,
+       SUM(quantity) * price AS total_sales
+FROM   Sales
+WHERE  sale_date BETWEEN '2005-07-05' AND '2018-10-10'
+GROUP  BY item_num;
+-- 8. List the item num, its title and the total profit that made the
+--    biggest profit for AZ in 2018.
+WITH y_sales
+     AS (SELECT item_num,Sum(quantity) AS total_number,
+                Sum(quantity) * price AS total_sales
+         FROM   Sales
+         WHERE  sale_date BETWEEN '2018-01-01' AND '2018-12-31'),
+     cost_per_unit
+     AS (SELECT DISTINCT item_num,avg_cost
+         FROM   Inventory)
+SELECT y_sales.item_num, title,
+       total_sales - ( cost_per_unit.avg_cost * total_number )
+       AS total_profit
+FROM   y_sales, cost_per_unit NATURAL JOIN Inventory
+GROUP  BY y_sales.item_num;
+-- 9. Show the items for which the inventory is below the minimum level
+--    in AZ system.
+SELECT *
+FROM   Inventory
+WHERE  quantity < min_level;
+-- 10. List the total sales in dollar to each customer of GV in 2018.
+SELECT cus_id, SUM(sale_amount) AS total_sales, contract_date
+FROM   Contract
+WHERE  contract_date BETWEEN '2018-01-01' AND '2018-12-31'
+GROUP  BY cus_id;
+-- TODO
+-- 11. Show m code, m name of the material(s) that GV purchased the
+--     most (measured by quantity) in the fourth quarter of 2018.
+-- TODO
+-- 12. Show the factory name that made the most total quantity of the
+--     product that was sold the most in 2018.
+------------------------------------
+-- 2.3.2 Queries for the LD database
+------------------------------------
+-- 13. Given a person’s identifier, find all the jobs this person is
+--     currently holding and worked in the past.
+SELECT job_code, title, start_date, end_date
+FROM   Works
+       NATURAL JOIN Job
+WHERE  per_id = 2
+ORDER  BY start_date DESC;
+-- 14. In a local or national crisis, we need to find all the people
+--     who once held a position of the given pos code. List per id, name,
+--     job title and the years the person worked in (starting year and
+--     ending year).
+SELECT per_id,first_name,last_name,start_date,end_date
+FROM   Person
+       NATURAL JOIN Works
+       NATURAL JOIN Job
+WHERE  job.pos_code = '13-2072.00'
+ORDER  BY end_date DESC;
+-- 15. Find all the unemployed people who once held a job position of
+--     the given pos code.
+WITH pos_workers
+     AS (SELECT per_id, first_name, last_name
+         FROM   Person
+                NATURAL JOIN Works
+                NATURAL JOIN Job
+         WHERE  job.pos_code = '13-2072.00')
+SELECT per_id, first_name, last_name
+FROM   pos_workers
+WHERE  NOT EXISTS (SELECT per_id
+                   FROM   Works
+                   WHERE  pos_workers.per_id = Works.per_id
+                          AND end_date = CURRENT_DATE);
+-- TODO
+-- 16. List the average, maximum and minimum annual pay (total
+--     salaries or wage rates multiplying by 1920 hours) of each
+--     industry (listed in GICS) in the order of the industry names.
+-- TODO
+-- 17. Find out the biggest employer, industry, and industry group in
+--     terms of number of employees. (Three queries)
+-- TODO
+-- Biggest employer
+-- TODO
+-- Biggest industry
+-- TODO
+-- Biggest industry group
+-- TODO
+-- 18. Find out the job distribution among industries by showing the
+--     number of employees in each industry.
+-- 19. Given a person’s identifier and a pos code, find the courses
+--     (course id and title) that each alone teaches all the missing
+--     skills for this person to be qualified for the specified position,
+--     assuming the skill gap of the worker and the requirement of the
+--     position can be covered by one course.
+WITH missing (sk_code)
+     AS (SELECT sk_code
+         FROM   Requires
+         WHERE  pos_code = '41-2022.00'
+         EXCEPT
+         SELECT sk_code
+         FROM   Has_skill
+         WHERE  per_id = 6)
+SELECT c_code, title
+FROM   Course
+WHERE  NOT EXISTS (SELECT sk_code
+                   FROM   missing
+                   EXCEPT
+                   SELECT sk_code
+                   FROM   Teaches
+                   WHERE  Course.c_code = Teaches.c_code);
+-- 20. Given a person’s identifier, find the job position with the
+--     highest pay rate for this person according to his/her skill
+--     possession.
+SELECT pos_code, title, MAX(pay_range_high)
+FROM   Position
+WHERE  NOT EXISTS (SELECT sk_code
+                   FROM   Has_skill
+                   WHERE  per_id = 6
+                   EXCEPT
+                   SELECT sk_code
+                   FROM   Requires);
+-- 21. Given a position code, list all the names along with the emails
+--     of the persons who are qualified for this position.
+SELECT per_id, first_name, last_name, email
+FROM   Person
+WHERE  NOT EXISTS (SELECT sk_code
+                   FROM   Requires
+                   WHERE  pos_code = '41-1011.00'
+                   EXCEPT
+                   SELECT sk_code
+                   FROM   Has_skill
+                   WHERE  Has_skill.per_id = Person.per_id);
+-- TODO
+-- 22. When a company cannot find any qualified person for a job
+--     position, a secondary solution is to find a person who is almost
+--     qualified to the job position. Make a “missing-k” list that lists
+--     people who miss only k skills for a specified pos code; k < 4.
+-- TODO
+-- 23. Suppose there is a new position that has nobody qualified. List
+--     the persons who miss the least number of skills that are required
+--     by this pos code and report the “least number”.
+-- TODO
+-- 24. List each of the skill code and the number of people who misses
+--     the skill and are in the missing-k list for a given position code
+--     in the ascending order of the people counts.
+-- TODO
+-- 25. Find out the number of the workers whose earnings increased in
+--     a specific industry group (use attribute “industry group” in table
+--     Company). [Hint: earning change = the sum of a person’s current
+--     earnings – the pay of the person’s the last previous job.]
+-- TODO
+-- 26. Find the position that have the most openings due to lack of
+--     qualified workers. If there are many openings of a position but at
+--     the same time there are many qualified jobless people. Then
+--     training cannot help fill up this type of job vacancies. What we
+--     want to find is the position that has the largest difference
+--     between vacancies (the unfilled jobs) and the number of jobless
+--     people who are qualified for the position.
+-- TODO
+-- 27. Find the course sets with up to three courses that teach every
+--     skill required by the position(s) found in Query #26. These courses
+--     should effectively help most jobless people become qualified for
+--     the jobs with high demands.
+-- TODO
+-- 28. List all the courses, directly or indirectly required, that a
+--     person has to take in order to be qualified for the job of given
+--     job code according to his/her skills possessed and courses taken
+--     based on the per id.

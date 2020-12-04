@@ -7,7 +7,7 @@ CREATE TABLE Factory (
     street_name     VARCHAR(30),
     unit_num        VARCHAR(10),
     city            VARCHAR(20),
-    state           VARCHAR(2), -- Two-letter state code
+    state_code      VARCHAR(2),
     zip_code        NUMERIC(5),
     phone           VARCHAR(20),
     manager         VARCHAR(30),
@@ -30,7 +30,7 @@ CREATE TABLE Material (
 CREATE TABLE Product (
     p_code          NUMERIC(8),
     p_name          VARCHAR(50),
-    description     VARCHAR(1000),
+    p_desc          VARCHAR(1000),
     quantity        NUMERIC(8),
     unit            VARCHAR(8),
     avg_cost        NUMERIC(4),
@@ -144,7 +144,7 @@ CREATE TABLE Employee (
     street_name     VARCHAR(30),
     unit_num        VARCHAR(10),
     city            VARCHAR(20),
-    state           VARCHAR(2), -- Two-letter state code
+    state_code      VARCHAR(2),
     zip_code        NUMERIC(5),
     email           VARCHAR(50),
     gender          VARCHAR(20),
@@ -159,7 +159,7 @@ CREATE TABLE Employee (
 CREATE TABLE Skill (
     sk_code         VARCHAR(10),
     title           VARCHAR(50),
-    description     VARCHAR(1000),
+    sk_desc         VARCHAR(1000),
     sk_level        VARCHAR(8)
         CHECK (sk_level IN ('beginner', 'medium', 'advanced')),
     PRIMARY KEY (sk_code)
@@ -171,7 +171,7 @@ CREATE TABLE Skill (
 CREATE TABLE Position (
     pos_code        VARCHAR(10),
     title           VARCHAR(50),
-    description     VARCHAR(1000),
+    pos_desc        VARCHAR(1000),
     pay_range_high  NUMERIC(8,2),
     pay_range_low   NUMERIC(8,2),
     PRIMARY KEY (pos_code)
@@ -253,7 +253,7 @@ CREATE TABLE Requires_by_job (
 CREATE TABLE Phone (
     emp_id          NUMERIC(8),
     num             VARCHAR(20),
-    description     VARCHAR(20), -- 'cell', 'work', etc
+    phone_desc      VARCHAR(20), -- 'cell', 'work', etc
     PRIMARY KEY (emp_id, num),
     FOREIGN KEY (emp_id) REFERENCES Employee
 );

@@ -17,7 +17,7 @@ CREATE TABLE Skill (
 CREATE TABLE Position (
     pos_code        VARCHAR(10),
     title           VARCHAR(50),
-    description     VARCHAR(1000),
+    pos_desc        VARCHAR(1000),
     pay_range_high  NUMERIC(8,2),
     pay_range_low   NUMERIC(8,2),
     PRIMARY KEY (pos_code)
@@ -55,7 +55,7 @@ CREATE TABLE GICS (
     ind_title       VARCHAR(100),
     ind_level       VARCHAR(14)
         CHECK (ind_level IN ('industry-group', 'industry', 'sub-industry')),
-    description     VARCHAR(1000),
+    ind_desc        VARCHAR(1000),
     parent_id       NUMERIC(8),
     PRIMARY KEY (ind_id),
     FOREIGN KEY (parent_id) REFERENCES GICS
@@ -83,7 +83,7 @@ CREATE TABLE Company (
     street_name     VARCHAR(30),
     unit_num        VARCHAR(10),
     city            VARCHAR(20),
-    state           VARCHAR(2), -- Two-letter state code
+    state_code      VARCHAR(2),
     zip_code        VARCHAR(5),
     industry_group  NUMERIC(4),
     website         VARCHAR(50),
@@ -100,7 +100,7 @@ CREATE TABLE Course (
     title           VARCHAR(50),
     c_level         VARCHAR(8)
         CHECK (c_level IN ('beginner', 'medium', 'advanced')),
-    description     VARCHAR(1000),
+    c_desc          VARCHAR(1000),
     status          VARCHAR(7)
         CHECK (status IN ('active', 'expired')),
     retail_price    NUMERIC(8,2),
@@ -140,7 +140,7 @@ CREATE TABLE Person (
     street_name     VARCHAR(30),
     unit_num        VARCHAR(10),
     city            VARCHAR(20),
-    state           VARCHAR(2), -- Two-letter state code
+    state_code      VARCHAR(2),
     zip_code        NUMERIC(5),
     email           VARCHAR(50),
     gender          VARCHAR(6),
@@ -231,7 +231,7 @@ CREATE TABLE Has_Skill (
 CREATE TABLE Phone (
     per_id          NUMERIC(8),
     num             VARCHAR(20),
-    description     VARCHAR(20), -- 'cell', 'work', etc
+    phone_desc      VARCHAR(20), -- 'cell', 'work', etc
     PRIMARY KEY (per_id, num),
     FOREIGN KEY (per_id) REFERENCES Person
 );
