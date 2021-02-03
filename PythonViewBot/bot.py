@@ -1,7 +1,7 @@
 #Selenium Webdriver must be installed for this to work
 
-import time;
-from selenium import webdriver;
+import time
+from selenium import webdriver
 
 #time to refresh page (seconds)
 Timer = 35
