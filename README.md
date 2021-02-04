@@ -1,5 +1,5 @@
 # Projects
-Side/Personal Projects
+ide/Personal Projects (PUBLIC REPO)
 
 This repository contains:
  - Python Automation Scripting
