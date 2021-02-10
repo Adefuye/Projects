@@ -1,0 +1,183 @@
+<!-- Author: Emmanuel 'EMAX' Adefuye-->
+<!-- Project: Valorant LFG-->
+<!-- Date: 04/01/2020-->
+
+<!DOCTYPE XHTML>
+<html>
+	<head>
+		<title>Valorant LFG</title>
+		
+		<link rel="shortcut icon" type="image/png" href="Assets/icon.png"/>-->
+		<link rel="stylesheet" href="Styles/styles.css">
+		<meta charset="utf-8">
+		<meta name="keywords" content="esports, valorant, gaming, lfg, team finder, twitch, mlg, stream, riotgames, beta, key">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="Small streamers grow viewership, colab and gain exposure">
+		<meta name="author" content="Emmanuel Adefuye, EMAX, LITERICH">
+	</head>
+
+	<body >
+		<div id="header">
+			
+			<div id="navbar"> <!--NavBar-->
+				<a href="#header" "><img id="logo" src="Assets/Logo.png"></a>
+				<ul id="HomeNav">
+					<!--<a href="#header"><li>H O M E</li></a>-->
+					<a href="#lfgForm"><LI>F E E D</LI></a>
+					<a href="#aboutContainer"><LI>A B O U T</LI></a>
+					<!--<a href=""><LI>C O N T A C T</LI></a>-->
+					<!--<button id="loginBtn">
+						<a href="login.html"><LI>L O G I N</LI></a>
+					</button>-->
+				</ul>
+			</div>
+
+			<div id="landing">
+				<!--<video preload="preload" id="video" autoplay="autoplay" loop="loop" muted>
+					<source src="Assets/mainVideo.mp4" type="video/mp4"></source>
+				</video> -->
+				<div id="landingContent">
+					<img id="fullLogo" src="Assets/Full Logo.png">
+					<h1>BUILD YOUR SQUAD</h1>
+
+					<!--<div id="btnWrapper">
+						<a href="#lfgForm">
+							<button id="joinTeamBtn" type="submit">FIND PLAYERS</button>
+						</a>
+						<a href="#embedStream">
+							<button id="createTeamBtn" type="submit">STREAMERS</button>
+						</a>
+					</div>-->
+				</div>
+				<!---->
+				<!---->
+			</div><!--Homepage Video-->
+        </div><!--end Header DIV-->
+        
+		<!--<div id="social">
+			<a href="https://instagram.com/literichh" target="_blank"><image id="IGLogo"src="Assets/Images/InstagramLogo.png"></a>
+			<a href="https://twitter.com/llterich" target="_blank"><image id="TwitterLogo"src="Assets/Images/TwitterLogo.png"></a>
+			<a href="https://facebook.com/literichh" target="_blank"><image id="FacebookLogo"src="Assets/Images/FacebookLogo.png"></a>
+		</div><!--end Social Floating Tab-->
+		<!--<div id="embedStream">
+			<div id="twitch-embed"></div>
+		</div>
+		<script src="https://embed.twitch.tv/embed/v1.js"></script>
+
+		<!-- Create a Twitch.Embed object that will render within the "twitch-embed" root element. -->
+		<!--<script type="text/javascript">
+		  new Twitch.Embed("twitch-embed", {
+			width: "100%",
+			height: 450,
+			theme: "dark",
+			channel: "PRMaverickZ",
+			// only needed if your site is also embedded on embed.example.com and othersite.example.com 
+			parent: ["embed.example.com", "othersite.example.com"]
+		  });
+		</script>
+
+		<!--<div id="featuredListWrapper">
+				<div id="streamCard" onclick="mastamindStream()">
+					<img src="Assets/mastamind.jpg">
+					<h1>Mastamind</h1>
+				</div>
+
+				<div id="streamCard" onclick="displayTwitch()">
+					<img src="Assets/PRMaverickZ.jpg">
+					<h1>PRMaverickZ</h1>
+				</div>
+			<a href="https://twitch.tv/alasiann" target="_blank">
+				<div id="streamCard">
+					<img src="Assets/alasiann.jpg">
+					<h1>Alasiann</h1>
+				</div>
+			</a>
+			<a href="https://twitch.tv/mixwell" target="_blank">
+				<div id="streamCard">
+					<img src="Assets/mixwell.jpg">
+					<h1>Mixwell</h1>
+				</div>
+			</a>
+		</div>
+
+		<div id="getFeatured">
+			<button onclick="streamSignUp()">Get Your Stream Featured</button>
+			<p>If you're a Valorant streamer, get connected to the community by getting
+				your stream featured right here on ValorantLFG. Email us a link to your
+				stream, why you're interested, and you're set!
+			</p>
+			<!--<img src="Assets/featured.png">-->
+		</div>
+		<!--<div id="postContainer">-->
+			<!--<h1 id="featuredH1">Featured</h1>
+			<div id="dailyBox">
+				<div id="box1">
+					<h1>Daily Tip</h1>
+					<p> The Valorant Closed beta is taking the gaming world by storm! Riot Games,
+						creators of the famous League of Legends add their own spin on tactical 
+						competitive shooters, and they do it in style. The game is shown to have taken
+						elements of Counter Strike: Global Offensive, and Overwatch, combined them and 
+						created a new IP. But the closed beta can be really difficult to get into.
+					</p>
+					<p>
+						Still trying to get a beta key? The closed beta is the most in-demand beta out
+						right now. Learn how to optimize your search for a key.
+						Here's how to easily get one: 
+
+					</p>
+					<a href="https://twitter.com/PlayVALORANT/status/1248790707990454272?s=20" target="_blank">
+						<button>ACCESS A KEY</button>
+					</a>
+				</div>
+
+			</div>-->
+
+			<!-------------FEED-------------->
+
+			<div id="lfgForm">
+				<!--<input type="text" id="postPlaceHolder" placeholder="Make a post..." maxlength="0"><br>-->
+				<form id="postInfo">
+					<input type="text" id="riotUsername" placeholder="Riot Username and #number" maxlength="20" required><br>
+					<input type="text" id="region" placeholder="Region" maxlength="14" required><br>
+					<textarea type="text" id="description" placeholder="Description" maxlength="150" required></textarea><br>
+					<button id="createBtn" type="submit">CREATE A POST</button>
+				</form>
+			</div>
+
+			<div id="postWrapper">
+				<!--<button id="refreshFeed" onclick="displayPosts()">O</button>-->
+			</div>
+
+        <!--</div><!--end gamesList DIV-->
+		<div id="aboutContainer">
+            <h1>What is VALORANT LFG</h1>
+            <p>
+                Valorant LFG is a platform to help Valorant players find squads.
+                If you're a casual player looking for chill fun matches, 
+                competitive player looking for serious Ranked players with experience,
+                or a streamer looking for other streamers and players to join your stream,
+                simply make a post and start building your squad.
+            </p>
+            <p>
+                To make a post, it's simple. Input your Riot Games username, what region
+                you're from, and what type of players you're looking for, and that's it, 
+                you're all set!
+            </p>
+            <p id="rules">
+                The rules for posts are simple, and should be easy to follow:<br>
+                - No bullying<br>
+                - No sexism<br>
+                - No racism<br>
+                - No homophobia <br>
+                - or other hate-based comments
+            </p>
+        </div>
+		<div id="footer">
+			<image id="footerLogo" src="Assets/LITE logo light.png">
+			<p>Copyright © 2020 LITERICH, All Rights Reserved</p>
+		</div>
+	</body>
+	
+	<script defer src="script.js"></script>
+
+</html>

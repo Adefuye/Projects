@@ -1,0 +1,631 @@
+$navbarColor:#06090f;
+$darkColor: #090d16;
+$lightColor: #fafafa;
+$midColor:#0b141f;
+$lighterMidcolor: #1c2d42;
+$btnColor: rgb(0, 204, 255);
+$redColor: #ff4654;
+$outline: 1px solid rgb(233, 233, 233);
+$fontFam: Arial;//Bahnschrift
+$radius: 5px;
+
+body, html{
+    background-color: $darkColor;
+    //background-image: url("/Assets/blurBG.png");
+    //background-repeat: no-repeat;
+    //background-attachment: fixed;
+    //background-size: auto;
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    scrollbar-color: $midColor $navbarColor;
+}
+//-------------NAVBAR----------------------
+#navbar{
+    width:100%;
+    position: fixed;
+    top:0px;
+    text-align:right;
+    background-color: $navbarColor;
+    z-index: 3;
+    outline:1px solid $redColor ;
+    box-shadow: 0 0px 10px 0 black;
+
+    ul li{
+        list-style-type: none;
+        display:inline-block;
+        padding: 10px 20px;
+        color: $lightColor;
+        font-size:10px;
+        font-family: $fontFam;
+        font-weight: bolder;
+        cursor: pointer;
+        transition:.2s;
+        &:hover{
+            color: $redColor;
+        }
+    }
+    button{
+        margin-right:20px;
+        background: rgba(0, 17, 19, 0.6);//button color
+        border: 1px solid $redColor;
+        font-size: 100%;
+        color:$lightColor;
+        cursor: pointer;
+        transition: .2s ease;
+        &:hover{
+            color: $lightColor;
+            background: rgba(255, 71, 58, 0.212);//button color
+        }
+    }
+}
+#logo {
+    display: inline-block;
+    //vertical-align: top;
+    width: 45px;
+    height: 45px;
+    position: fixed;
+    top: 10px;
+    left: 20px;
+  }
+//---------------------LANDING BANNER-------------------
+#landing {
+    position: relative;
+    width: 100%;
+    //overflow: hidden;
+    //object-fit: cover;
+    //text-align: center;
+    align-content: center;
+    justify-content: center;
+    height: 100vh;
+    margin-bottom: 10px;
+    //display: block;
+    text-align: center;
+    
+    background-image: url("/Assets/landingIMG.jpg");
+    background-repeat: no-repeat;
+    background-size: fill 100%;
+    background-position: center center;
+
+    #video{
+        z-index: 0;
+        max-width: 100%;
+        overflow: hidden;
+        position: relative;
+        top:0px;
+    }
+
+    #landingContent{
+        //background-color: $redColor;
+        max-width: 1140px;
+        margin: auto;
+        position: relative;
+        top: 30%;
+
+        h1{
+            position: relative;
+            top:-40px;
+            color: $lightColor;
+            font-family: $fontFam;
+            font-size: 30px;
+            //background-color: red;
+        }
+    }
+
+    #fullLogo{
+        //background-color: red;
+        margin: auto;
+        padding:none;
+        position: relative;
+        top: 40%;
+        min-width:375px;
+        max-width: 65%;
+    }
+
+    #btnWrapper{
+        width:350px;
+        z-index: 2;
+        position: relative;
+        top:-50px;
+        //background-color: red;
+        display: inline-block;
+
+        button{
+            margin: 10px;
+            min-width: 150px;
+            height:50px;
+            background: rgba(3, 79, 87, 0.5);//button color
+            outline: 2px solid $btnColor;
+            border:none;
+            font-weight: bold;
+            font-size: 100%;
+            font-family: $fontFam;
+            color:$lightColor;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: .3s ease;
+            &:hover{
+                //outline-offset: 2px;
+                //outline-color: $lightColor;
+                //background: rgb(4, 100, 110);//button color
+                background: $btnColor ;
+            }
+        }
+    }
+    
+}
+//--------------------FEATURED--------------------
+#getFeatured{
+    margin: auto;
+    margin-bottom: 10px;
+    max-width: 1140px;
+    height: auto;
+    background-color: $midColor;
+    border: 1px solid $lighterMidcolor;
+    border-radius: $radius;
+    h1{
+        color: $lightColor;
+        font-family: $fontFam;
+        margin-left: 10px;
+    }
+    p{
+        position: relative;
+        color: $lightColor;
+        font-family: $fontFam;
+        font-size: 18px;
+        left:10%;
+        width: 80%;
+    }
+    hr{
+        border-top: 1px solid $lighterMidcolor;
+        width: 100%;
+    }
+    img{
+        position: relative;
+        left:10%;
+        width: 80%;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+    button{
+       // margin-left: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        left:10%;
+        width: 80%;
+        height:50px;
+        position: relative;
+        background: rgba(0, 17, 19, 0.6);//button color
+        border: 2px solid $btnColor;
+        font-weight: bold;
+        font-size: 100%;
+        color:$lightColor;
+        margin-top: 10px;
+        cursor: pointer;
+        transition: .2s ease;
+        &:hover{
+            background: rgb(3, 78, 87);//button color
+        }
+    }
+}
+
+#embedStream{
+    max-width: 1140px;
+    margin: auto;
+    height: auto;
+}
+
+#twitch-embed{
+    margin:auto;
+    margin-bottom: 10px;
+    max-width: 1140px;
+    border: 1px solid $lightColor;
+    border-radius: $radius;
+}
+#mixer{
+    margin:auto;
+    margin-bottom: 10px;
+    max-width: 1140px;
+    border: 1px solid $lightColor;
+    border-radius: $radius;
+}
+#featuredListWrapper{
+    margin: auto;
+    max-width: 1140px;
+    height: auto;
+    text-align: center;
+    //background-color: $redColor;
+    //border: 1px solid $lighterMidcolor;
+    //border-radius: $radius;
+
+    #streamCard{
+        margin:auto;
+        border: 1px solid $lighterMidcolor;
+        border-radius: $radius;
+        width: 280px;
+        height: 180px;
+        background-color: $midColor;
+        transition: .2s ease;
+        display: inline-block;
+        margin-bottom: 10px;
+        h1{
+            color:$lightColor;
+            font-family: $fontFam;
+            font-size: 20px;
+        }
+        img{
+            width: 100%;
+            border-radius: $radius;
+        }
+        &:hover{
+            border: 1px solid $redColor;
+            background-color: $lighterMidcolor;
+        }
+    }
+}
+
+#lfgForm{
+    //background-color:blue; //for debugging only\
+    height:350px;
+    max-width:1140px;
+    min-width: auto;
+    margin: auto;
+    margin-bottom: 10px;
+    //position: relative;
+    background-color: $midColor;
+    text-align: center;
+    border: 1px solid $lighterMidcolor;
+    border-radius: $radius;
+
+    h1{
+        color: $lightColor;
+        font-family: $fontFam;
+    }
+
+    div{
+        position: relative;
+        width: 350px;
+        height: 350px;
+        background-color: $darkColor;
+        border: 1px solid $lighterMidcolor;
+        border-radius: $radius;
+        margin: auto;
+    }
+
+    #postInfo{
+        position: relative;
+        width: 350px;
+        height:80%;
+        //background-color: red;
+        top:10%;
+        margin: auto;
+        input{
+            width:100%;
+        }
+        #description{
+            width:100%;
+            height: 70px;
+            padding: 10px;
+            margin-top:5px;
+            resize: none;
+            font-family: $fontFam;
+            font-size: 15px;
+            text-align: justify;
+        }
+        #createBtn{
+            font-family: $fontFam;
+            min-width: 100%;
+            height:50px;
+            position: relative;
+            background: rgba(0, 17, 19, 0.6);//button color
+            border: 2px solid $btnColor;
+            font-weight: bold;
+            font-size: 100%;
+            color:$lightColor;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: .2s ease;
+            &:hover{
+                background: rgb(3, 78, 87);//button color
+            }
+        }
+    }
+
+}
+
+//----------------GAME POSTS------------------
+
+#featuredH1{
+    margin:auto;
+    margin-bottom: 10px;
+    //background-color: red;
+    color: $lightColor;
+    position: relative;
+    max-width:1140px;
+    font-family: $fontFam;
+}
+
+#dailyBox{ //daily tip
+    position: relative;
+    margin: auto;
+    margin-bottom: 10px;
+    text-align: center; 
+    max-width:1140px;
+    min-width: auto;
+    height: auto;
+    //background-color: red;
+
+    #box1{
+        display: inline-block;
+        //max-width: 570px;
+        width: 100%;
+        height: auto;
+        background-color: $midColor;
+        border: 1px solid $lighterMidcolor;
+        border-radius: $radius;
+        color: $lightColor;
+        font-family: $fontFam;
+        text-decoration: none;
+        p{
+            text-align: justify;
+            font-size: 15px;
+            padding-left:20px;
+            padding-right: 20px;
+        }
+        button{
+            min-width: 40%;
+            height:50px;
+            position: relative;
+            background: rgba(0, 17, 19, 0.6);//button color
+            border: 2px solid $btnColor;
+            font-weight: bold;
+            font-size: 100%;
+            color:$lightColor;
+            margin: 20px;
+            cursor: pointer;
+            transition: .2s ease;
+            &:hover{
+                background: rgb(3, 78, 87);//button color
+            }
+        }
+    }
+
+    #box2{
+        position: relative;
+        display: inline-block;
+        max-width: 560px;
+        min-width: 560px;
+        height: 100%;
+        background-color: $midColor;
+        border: 1px solid $lighterMidcolor;
+        border-radius: $radius;
+        color: $lightColor;
+        font-family: $fontFam;
+        text-decoration: none;
+        p{
+            text-align: justify;
+            font-size: 15px;
+            padding-left:20px;
+            padding-right: 20px;
+        }
+        button{
+            min-width: 40%;
+            height:50px;
+            position: relative;
+            background: rgba(0, 17, 19, 0.6);//button color
+            border: 2px solid $btnColor;
+            font-weight: bold;
+            font-size: 100%;
+            color:$lightColor;
+            margin: 20px;
+            cursor: pointer;
+            transition: .2s ease;
+            &:hover{
+                background: rgb(3, 78, 87);//button color
+            }
+        }
+    }
+    
+}
+
+#postWrapper{
+    position: relative;
+    max-height: 700px;
+    //background-color: red;
+    background-color: $midColor;
+    max-width:1140px;
+    min-width: auto;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid $lighterMidcolor;
+    border-radius: $radius;
+    text-align: center;
+    margin:auto;
+    margin-bottom: 10px;
+}
+
+#postcards{//game cards
+    position: relative;
+    height:auto;
+    width: 60%;
+    min-width: 250px;
+    margin: 15px;
+    border: 1px solid $lighterMidcolor;
+    border-radius: $radius;
+    display: inline-block;
+    color: $lightColor;
+    font-family: $fontFam;
+    //background-image:url("/Assets/postcardBG.jpg");
+    background-color: $darkColor;
+    transition:.2s ease-out;
+    &:hover{
+        background-color: $midColor;
+        box-shadow: 0 0px 30px 0 $navbarColor;
+    }
+    h1{
+        font-size: 20px;
+        font-family: $fontFam;
+        position: relative;
+        font-weight: bold;
+    }
+    p{
+        font-family: $fontFam;
+        position: relative;
+    }
+}
+
+/*#postContainer{
+    width:auto;
+    display: inline-block;
+    background-color:red;
+    text-align: center ;
+    color:$lightColor;
+    margin-bottom: 10px;
+
+    #title{
+        font-family: $fontFam;
+        position: relative;
+    }
+
+
+}*/
+
+//Try making the images button
+
+#gamePic{
+    height:200px;
+    width: 200px;
+    //position: relative;
+    border-radius: 10px;
+    border: 1px solid $lightColor;
+    top:100px;
+    display: inline-block;
+    margin: 15px;
+    box-shadow: 0 5px 20px 0 #000;
+    opacity:.4;
+    transition:.3s ease-out;
+    filter:grayscale(40%);
+    &:hover{
+        filter:grayscale(0%);
+        opacity:1;
+    }
+}
+
+//------------FOOTER-------------------
+
+#footer{
+    //position: relative;
+    //bottom: 0;
+    width:100%;
+    height:150px;
+    color:$lightColor;//text color
+    font-family: $fontFam;
+    font-size:12px;
+    text-align: center;
+    //display: inline-block;
+    padding-top:50px;
+    background-color: $navbarColor;
+    //border-top: 1px solid $lighterMidcolor;
+}
+#footerLogo{
+    width:150px;
+    height:50px;
+
+}
+
+//--------------------------------ABOUT-------------------------------
+
+#aboutContainer{
+    position: relative;
+    //top: 100px;
+    background-color: $midColor;
+    height: auto;
+    max-width:1140px;
+    min-width: auto;
+    margin-left:auto;
+    margin-right:auto;
+    border: 1px solid $lighterMidcolor;
+    border-radius: $radius;
+    margin-bottom:10px;
+    //padding-bottom:100px;
+    //overflow: auto;
+    
+
+    h1{
+        color: $lightColor;
+        font-family: $fontFam;
+        position: relative;
+        top: 20px;
+        text-align: center;
+    }
+    #rules{
+        color: $lightColor;
+        font-family: $fontFam;
+        margin:20px;
+    }
+    p{
+        font-size: 15px;
+        padding:20px;
+        margin:20px;
+        line-height: 1.6;
+        color: $lightColor;
+        font-family: $fontFam;
+        position: relative;
+        text-emphasis: justify;
+    }
+    #rules{
+        font-size: 25px;
+    }
+}
+
+//--------------------------------LOGIN PAGE-------------------------------
+
+#login{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: $midColor;
+    text-align: center;
+}
+
+  #sentMessage {
+    font-size: 15px;
+    margin: 0;
+    font-family: Roboto;
+  }
+  
+  #loginForm {
+    font-family: $fontFam;
+    font-size: 25px;
+    top: 40%;
+    position: relative;
+  }
+  
+  input {
+      width:500px;
+      height:50px;
+      color: black;
+      border: 1px solid #ccc;
+      display: inline-block;
+      padding: 10px 10px;
+      margin: 5px 0;
+      cursor: auto;
+      font-size: 15px;
+      border:none;
+    &[type=submit] {//button
+      width:500px;
+      padding: 10px 10px;
+      margin: 5px 0;
+      background: rgba(0, 17, 19, 0.6);//button color
+      border: 2px solid $btnColor;
+      font-weight: bold;
+      font-size: 100%;
+      color:$lightColor;
+      cursor: pointer;
+      transition: .2s ease;
+      &:hover{
+          background: rgb(3, 78, 87);//button color
+      }
+    }
+  }
+
