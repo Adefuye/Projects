@@ -18,28 +18,36 @@ code {
   width: 100%;
   //background-color: red;
   position: relative;
-  //top:100px;
   height:100vh;
 }
 
 .navbar{
   width:100%;
-  color:#7e7e7e;
-  font-family: Arial ;
+  color:black;
+  font-family: monospace ;
   font-weight: bold;
   position: fixed;
   top:0px;
   text-align:right;
   background-color: white;
   z-index: 3;
-  border-bottom: 1px solid #c7c7c7;
+  border-bottom: 1px solid #e0e0e0;
   font-size:17px;
 }
 
 .navList li{
   list-style-type: none;
   display: inline-block;
-  padding: 10px 20px;
+  padding: 10px;
+  //background-color: blue;
+  height:20px;
+}
+
+.navWrapper{
+  position: relative;
+  //background-color: red;
+  margin: auto;
+  max-width: 950px;
 }
 
 .wrapper{
@@ -51,17 +59,63 @@ code {
   top:100px;
 }
 
-.projectCards{
+.collectionCards{
   text-align: center;
-  color: #7e7e7e;
+  color: black;
   position: relative;
   display: inline-block;
   background-color: white;
-  border: 1px solid #c7c7c7;
-  height:400px;
+  border: 1px solid #e0e0e0;
+  height:250px;
   width:300px;
+  min-width:200px ;
   border-radius: 5px;
   margin:10px;
+  font-family: monospace ;
+  background-image: url('https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300');
+  //background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.inputDiv{
+  position: relative;
+  max-width: 950px;
+  height:350px;
+  background-color: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 5px;
+  margin:auto;
+}
+
+.inputField{
+  margin-bottom: 10px;
+  width: 80%;
+  height: 70px;
+  font-size: 18px;
+  font-family: monospace;
+  font-weight: bold;
+  color: black;
+  border: none;
+  border-bottom: 2px solid gray;
+  outline:none;
+}
+
+.addBtn{
+  height:70px;
+  width:80%;
+  font-size: 20px;
+  font-family: monospace;
+  font-weight: bold;
+  border: none;
+  background-color: black;
+  color:white;
+  border-radius: 5px;
+  outline: none;
+  transition: .1s ease-in-out;
+}
+.addBtn:hover{
+  box-shadow: 0px 0px 5px 1px gray;
 }
 
 .footer{

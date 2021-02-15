@@ -1,5 +1,6 @@
 import Navbar from './components/Navbar'
-import ProjectCards from './components/ProjectCards'
+import CollectionCard from './components/CollectionCard'
+import InputBar from './components/InputBar'
 //import Footer from './components/Footer'
 
 function App() {
@@ -10,9 +11,11 @@ function App() {
       <Navbar />
 
       <div className="wrapper">
-        <ProjectCards />
-        <ProjectCards />
-        <ProjectCards />
+        <InputBar />
+
+        <CollectionCard />
+        <CollectionCard />
+        <CollectionCard />
       </div>
 
     </div>
