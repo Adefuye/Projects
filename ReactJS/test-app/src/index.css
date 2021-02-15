@@ -1,5 +1,5 @@
 body {
-  background-color: #0a0e18;
+  background-color: #f8f8f8;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -16,21 +16,23 @@ code {
 .pageContainer{
   height:100%;
   width: 100%;
-  background-color: red;
+  //background-color: red;
   position: relative;
-  top:100px;
+  //top:100px;
+  height:100vh;
 }
 
 .navbar{
   width:100%;
-  color:white;
+  color:#7e7e7e;
   font-family: Arial ;
+  font-weight: bold;
   position: fixed;
   top:0px;
   text-align:right;
-  background-color: #0d1422;
+  background-color: white;
   z-index: 3;
-  box-shadow: 0 0px 10px 0 black;
+  border-bottom: 1px solid #c7c7c7;
   font-size:17px;
 }
 
@@ -41,21 +43,35 @@ code {
 }
 
 .wrapper{
-  background-color: blue;
+  //background-color: blue;
   max-width:1000px;
   margin:auto;
   text-align: center;
+  position: relative;
+  top:100px;
 }
 
 .projectCards{
   text-align: center;
-  color:white;
+  color: #7e7e7e;
   position: relative;
   display: inline-block;
-  background-color: #0b141f;
+  background-color: white;
+  border: 1px solid #c7c7c7;
   height:400px;
   width:300px;
+  border-radius: 5px;
+  margin:10px;
 }
-.image{
-  width:100%;
+
+.footer{
+  position: relative;
+  font-size: 15px;
+  left:0;
+  margin-bottom:0;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  color: #7e7e7e;
+  height:400px;
 }
