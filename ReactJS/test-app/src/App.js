@@ -7,7 +7,10 @@ function App() {
   return (
     <div className="pageContainer">
       <Navbar />
-      <ProjectCards />
+      
+      <div className="wrapper">
+        <ProjectCards />
+      </div>
     </div>
   );
 }

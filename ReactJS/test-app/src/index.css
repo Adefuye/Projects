@@ -1,5 +1,5 @@
 body {
-  background-color: #090d16;
+  background-color: #0a0e18;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,20 +15,23 @@ code {
 
 .pageContainer{
   height:100%;
-  width: 50%;
+  width: 100%;
   background-color: red;
+  position: relative;
+  top:100px;
 }
 
 .navbar{
   width:100%;
   color:white;
-  font-family:Bahnschrift;
+  font-family: Arial ;
   position: fixed;
   top:0px;
   text-align:right;
-  background-color: #06090f;
+  background-color: #0d1422;
   z-index: 3;
   box-shadow: 0 0px 10px 0 black;
+  font-size:17px;
 }
 
 .navList li{
@@ -37,12 +40,22 @@ code {
   padding: 10px 20px;
 }
 
+.wrapper{
+  background-color: blue;
+  max-width:1000px;
+  margin:auto;
+  text-align: center;
+}
+
 .projectCards{
   text-align: center;
   color:white;
   position: relative;
+  display: inline-block;
   background-color: #0b141f;
-  top:200px;
-  height:200px;
+  height:400px;
   width:300px;
+}
+.image{
+  width:100%;
 }
