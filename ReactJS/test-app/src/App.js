@@ -12,7 +12,7 @@ function App() {
 
       <div className="wrapper">
         <InputBar />
-
+        
         <CollectionCard />
         <CollectionCard />
         <CollectionCard />

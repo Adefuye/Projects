@@ -79,9 +79,11 @@ code {
 }
 .collectionCards p{
   font-size: 15px;
+  font-weight: bold;
+  color: grey;
 }
 .collectionCards h1{
-  font-size: 20px;
+  font-size: 18px;
 }
 
 
@@ -89,7 +91,7 @@ code {
 .inputDiv{
   position: relative;
   max-width: 100%;
-  height:350px;
+  height:260px;
   background-color: white;
   border: 1px solid #e0e0e0;
   border-radius: 5px;
@@ -99,8 +101,8 @@ code {
 
 .inputField{
   margin-bottom: 10px;
-  width: 80%;
-  height: 70px;
+  width: 79%;
+  height: 50px;
   font-size: 18px;
   font-family: monospace;
   font-weight: bold;
@@ -111,7 +113,7 @@ code {
 }
 
 .addBtn{
-  height:70px;
+  height:50px;
   width:80%;
   font-size: 20px;
   font-family: monospace;
@@ -122,6 +124,7 @@ code {
   border-radius: 5px;
   outline: none;
   transition: .1s ease-in-out;
+  margin-top: 5px;
 }
 .addBtn:hover{
   box-shadow: 0px 0px 5px 1px gray;
