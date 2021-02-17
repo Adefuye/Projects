@@ -1,10 +1,13 @@
 const InputBar = () =>{
+    function addToList(){
+        console.log('Added to list');
+    }
+
     return(
         <div className="inputDiv">
             <input className="inputField" placeholder="Item Name"></input>
-            <input className="inputField" placeholder="Item Description"></input>
-            <input className="inputField" placeholder="Collection"></input>
-            <button className="addBtn">Add</button>
+            <input className="inputField" id="descriptionInput" placeholder="Item Description"></input>
+            <button className="addBtn" onClick={addToList}>Add</button>
         </div>
     )
 }

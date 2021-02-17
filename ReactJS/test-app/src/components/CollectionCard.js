@@ -1,16 +1,13 @@
-const CollectionCard = () => {
-    return(
-        <div className = "collectionCards">
-            <div id="gradient">
-                <h1>
-                    Collection Card Title
-                </h1>
+import Card from "./Card"
 
-                <p>
-                    Card Description details!
-                </p>
-            </div>
-        </div>
+const CollectionCard = ({ cards }) => {
+
+    return(
+        <>
+            {cards.map((card) => (
+                <Card key={card.id} card={card} />
+            ))}
+        </>
     )
 }
 
