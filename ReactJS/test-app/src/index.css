@@ -60,7 +60,7 @@ code {
 }
 
 .card{
-  //text-align: left;
+  text-align: left;
   color: black;
   position: relative;
   display: inline-block;
@@ -70,7 +70,7 @@ code {
   width:90%;
   min-width:200px ;
   border-radius: 5px;
-  margin:auto;
+  //margin:auto;
   font-family: Bahnschrift ;
   //background-image: url('https://images.ctfassets.net/hrltx12pl8hq/7yQR5uJhwEkRfjwMFJ7bUK/dc52a0913e8ff8b5c276177890eb0129/offset_comp_772626-opt.jpg?fit=fill&w=800&h=300');
   background-repeat: no-repeat;
@@ -78,16 +78,24 @@ code {
   margin-bottom: 10px;
   transition: .1s ease-in-out;
 }
-.collectionCards p{
+.card p{
   font-size: 15px;
   font-weight: bold;
   color: grey;
+  padding-left: 30px;
 }
-.collectionCards h1{
-  font-size: 18px;
+.card h3{
+  padding-left: 30px;
+  font-size: 20px;
 }
-.collectionCards:hover{
+.card:hover{
   box-shadow: 0px 0px 15px 0px rgb(206, 206, 206);
+}
+.xBtn{
+  position: absolute;
+  right:10px;
+  top:10px;
+  color: gray;
 }
 
 
