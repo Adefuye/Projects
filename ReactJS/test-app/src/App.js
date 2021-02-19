@@ -6,27 +6,42 @@ import CollectionsDiv from './components/CollectionsDiv'
 //import Footer from './components/Footer'
 
 const App = () => {
-  const [cards, setcards] = useState([
+  const [cards, setCards] = useState([
     {
         id: 1,
-        title: 'card #1',
-        description: 'the first card',
+        title: 'Ultimate Charizard',
+        description: 'Pokemon Base Set, PSA 10 GEM MINT',
     },
     {
         id: 2,
-        title: 'card #2',
-        description: 'the second card',
+        title: 'Nike Air Force 1 Love Letter',
+        description: 'Mens size 9 Limited Love Letter Air Force 1',
     },
   ])
 
+  //add a card
+  const addCard = (card) => {
+    const id = Math.floor(Math.random() * 10000) + 1;
+    const newCard = {id, ...card}
+    setCards([...cards, newCard])
+  }
+
+  //remove a card
+  const removeCard = (id) =>{
+    setCards(cards.filter((cards) => cards.id !==id))
+  }
+
   return (
     <div className="pageContainer">
-      <Navbar /> 
+      
 
       <div className="wrapper">
-        <InputBar />
+        <InputBar onAdd={addCard}/>
 
-        <CollectionCard cards={cards} />
+        {cards.length > 0 ? 
+          <CollectionCard cards={cards}
+          onRemove={removeCard} /> : 'Add Items to your collection'
+        }
       </div>
 
     </div>
