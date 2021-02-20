@@ -35,6 +35,7 @@ const App = () => {
       
 
       <div className="wrapper">
+        <h1>My Collection</h1>
         <InputBar onAdd={addCard}/>
 
         {cards.length > 0 ? 

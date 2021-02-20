@@ -15,6 +15,7 @@ const InputBar = ({onAdd}) =>{
         }
         if(!description){
             alert('Your Item Description is missing');
+            return;
         }
 
         onAdd({title, description})
