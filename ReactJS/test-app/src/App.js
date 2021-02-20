@@ -2,7 +2,6 @@ import {useState} from 'react'
 import Navbar from './components/Navbar'
 import CollectionCard from './components/CollectionCard'
 import InputBar from './components/InputBar'
-import CollectionsDiv from './components/CollectionsDiv'
 //import Footer from './components/Footer'
 
 const App = () => {
