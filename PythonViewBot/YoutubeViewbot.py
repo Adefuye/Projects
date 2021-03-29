@@ -11,7 +11,7 @@ from selenium import webdriver;
 def window():
     def runBot():
         #time to refresh page (seconds)
-        Timer = 30
+        Timer = 350
 
         #youtube link
         link = linkInput.text()
