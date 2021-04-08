@@ -14,10 +14,10 @@ def window():
         Timer = 30
 
         #youtube link
-        link = linkInput.text()
+        https://youtu.be/dCVadmaZVvo
 
         #number of views
-        views = 1000
+        views = 500
         
 
         driver = webdriver.Chrome('webdrivers\chromedriver.exe')
