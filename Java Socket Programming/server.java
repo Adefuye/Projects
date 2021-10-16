@@ -9,15 +9,26 @@ import java.util.*;
 public class server{
     public static void main(String[] args) throws IOException
     {
-        ServerSocket ss = new ServerSocket(4999);
+        
+        ServerSocket ss = new ServerSocket(5000);
         Socket s = ss.accept();
-
 
         InputStreamReader in = new InputStreamReader(s.getInputStream());
         BufferedReader bf = new BufferedReader(in);
 
-        String str = bf.readLine();
-        System.out.println(str + " Connected");
-        System.out.println(str + ": [message goes here]" );
+        String clientMessage = "";
+        
+        while (clientMessage != "bye")
+        {
+            clientMessage = bf.readLine();
+            System.out.println(clientMessage);
+        }
+        if(clientMessage == "bye")
+        {
+            System.out.println("[client disconnected]");
+        }
+        
+
+        
     }
 }

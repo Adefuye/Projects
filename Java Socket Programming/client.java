@@ -9,17 +9,38 @@ import java.util.*;
 public class client{
     public static void main(String[] args) throws IOException
     {
-        Socket s = new Socket("localhost", 4999);
+        Socket s = new Socket("localhost", 5000);
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("What is your name: ");
-        String username = input.nextLine();
-        System.out.println("message: ");
-        String message = input.nextLine();
-
-
+        String message = "";
         PrintWriter pr = new PrintWriter(s.getOutputStream());
-        pr.println(username);
-        pr.flush();
+        PrintWriter nameOut = new PrintWriter(s.getOutputStream());
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("username = ");
+        String username = input.nextLine();
+        nameOut.println("Welcome "+username+"!");
+        nameOut.flush();
+
+        if (username != "")
+        {
+            while(message != "bye")
+            {
+                System.out.println("message: ");
+                message = input.nextLine();
+
+                pr.println(username + ": " + message);
+                pr.flush();
+
+                
+            }
+            if(message == "bye")
+            {
+                nameOut.println("Goodbye "+username+"!");
+                pr.close();
+            }
+        }
+        else if(username == ""){
+            pr.close();
+        }
     }
 }
