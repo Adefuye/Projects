@@ -11,6 +11,7 @@ public class server{
     {
         
         ServerSocket ss = new ServerSocket(5000);
+        int threadCount = 0;
         Socket s = ss.accept();
 
         InputStreamReader in = new InputStreamReader(s.getInputStream());
