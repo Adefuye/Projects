@@ -3,7 +3,8 @@
 //Date: 10/27/2021
  
 import java.io.*;
-import java.net.*;
+import java.net.Socket;
+import java.net.ServerSocket;
 import java.util.*;
 
 public class newServer{
@@ -26,11 +27,11 @@ public class newServer{
     {
         try{
             while(serverSocket.isClosed() != true){
-                Soceket socket = serverSocket.accept();
+                Socket socket = serverSocket.accept();
                 System.out.println("client connected");
                 clientMessenger messenger = new clientMessenger(socket);
 
-                Thread thread = new Thread(clientMessenger); //multi-threading
+                Thread thread = new Thread(messenger); //multi-threading
                 thread.start();
             }
         } catch (IOException e){
@@ -43,8 +44,8 @@ public class newServer{
         try{
             if(serverSocket != null){ //if a socket to be closed exists
                 serverSocket.close();
-                e.printStackTrace();
             }
-        }
+        } catch(IOException e){
+            e.printStackTrace();        }
     }
 }
