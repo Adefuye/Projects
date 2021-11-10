@@ -15,10 +15,15 @@ public class clientMessenger implements Runnable
 {
     //arrayList to hold all the clients and handle sending messages to all
     public static ArrayList<clientMessenger> messengers = new ArrayList<>();
+    public static ArrayList<newClient> clients = new ArrayList<>();
+    
     private Socket socket;
     private BufferedReader bufferedReader; //read messages from clients
     private BufferedWriter bufferedWriter; //send messages to all clients
     private String clientName;
+
+    private String clientMessage;
+    private String clientNumber;
 
     public clientMessenger(Socket socket){//this is the constructor
         try{
@@ -27,6 +32,7 @@ public class clientMessenger implements Runnable
             this.bufferedReader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
             this.clientName = bufferedReader.readLine();
+
             messengers.add(this); //adds new client into the ArrayList
             sendMessage(clientName + " has joined the server");//sends the message to all clients
         } catch (IOException e){
@@ -37,12 +43,15 @@ public class clientMessenger implements Runnable
     @Override
     public void run()
     {
-        String clientMessage;
+        //String clientMessage;
 
         while(socket.isConnected())//while connected to a client
         {
             try{
+
+                
                 clientMessage = bufferedReader.readLine();
+
                 sendMessage(clientMessage);//sends the message to all clients
             }catch(IOException e){
                 shutDown(socket, bufferedReader, bufferedWriter);//closses everything
@@ -60,11 +69,11 @@ public class clientMessenger implements Runnable
                     if(sentMessage == "bye"){
                         shutDown(socket, bufferedReader, bufferedWriter);//closses everything
                     }else{
+
                         messenger.bufferedWriter.write(sentMessage);
                         messenger.bufferedWriter.newLine();
                         messenger.bufferedWriter.flush();  
                     }
-                    
                 }
             }catch(IOException e){
                 shutDown(socket, bufferedReader, bufferedWriter);//closses everything
