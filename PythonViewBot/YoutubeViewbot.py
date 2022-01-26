@@ -11,13 +11,13 @@ from selenium import webdriver;
 def window():
     def runBot():
         #time to refresh page (seconds)
-        Timer = int(timeInput.text())
+        Timer = int(timeInput.text(3 second))
 
         #youtube link
-        link = linkInput.text()
+        link = linkInput.text(https://www.youtube.com/watch?v=1GNgvTK14hQ)
 
         #number of views
-        views = 1000
+        views = 4000
         
 
         driver = webdriver.Chrome('webdrivers\chromedriver.exe')
