@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,6 +25,7 @@ public class MainPlayerControls : MonoBehaviour
             rb.angularVelocity = Time.deltaTime + rb.angularVelocity;
             
     }
+    
 	// Update is called once per frame
 	void Update()
     {
@@ -42,6 +43,7 @@ public class MainPlayerControls : MonoBehaviour
     }
     public void spinCounterWeight(){rb.angularDrag = 10;}
     public void wait(){Invoke("PlayerMovement", .8f);}
+
     public void PlayerMovement()
     {
      
@@ -49,12 +51,12 @@ public class MainPlayerControls : MonoBehaviour
         rb.velocity = new Vector2(60, rb.velocity.y); //Initial Speed/Direction (speed, direction)
         
         //FindObjectOfType<AudioManager>().Play("MovementSound");//PLAYS AUDIO           
-        rb.angularDrag = 10;
-        rb.constraints = RigidbodyConstraints2D.None;
+        //rb.angularDrag = 10;
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-    //-----------------C O N T R O L  R O T A T I O N---------------
+    //-----------------C O N T R O L  R O T A T I O N (DEPRECATED)---------------
 
-        if(rb.angularVelocity > 50f || rb.angularVelocity < -50f)
+       /* if(rb.angularVelocity > 50f || rb.angularVelocity < -50f)
         {
             rb.angularDrag += 5;
             Invoke("spinCounterWeight", .5f);//slows down rotation speed
@@ -73,7 +75,7 @@ public class MainPlayerControls : MonoBehaviour
         {
             rb.angularDrag += 30;
             Invoke("spinCounterWeight", .5f);
-        }
+        }*/
 
     //-------------------------C O N T R O L S-----------------------
 
@@ -86,7 +88,7 @@ public class MainPlayerControls : MonoBehaviour
             moveDown();
         }
         //Input.GetTouch(0).position.x < screenWidth/2
-    //-----------------S P E C I A L  A B I L I T Y------------------
+    //-----------------P O W E R  U P S------------------
     //Will create a new class for different character abilities, then call one of those methods
     //in this method depending on what character is being used
         else if (Input.GetKeyDown("space"))
