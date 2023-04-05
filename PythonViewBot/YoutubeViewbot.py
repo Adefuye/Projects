@@ -20,7 +20,7 @@ def window():
         views = 1000
         
 
-        driver = webdriver.Chrome('webdrivers\chromedriver.exe')
+        driver = webdriver.Chrome()
         driver.get(link)
 
         for i in range(views):
